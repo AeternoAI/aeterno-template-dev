@@ -1,45 +1,37 @@
 # AeternoAI DevLib 🛠️
 
-> Developer productivity tools and enhanced development experience resources for AeternoAI projects
+> Developer tools and Cursor IDE rules for AeternoAI projects
 
 ## Overview
 
-This repository contains tools, utilities, scripts, and resources designed to improve developer experience (DX) and streamline the development workflow for AeternoAI projects. Our goal is to enhance productivity, maintain consistency, and reduce friction in the development process.
+This repository is a storage location for:
+1. `.cursor` rules and configurations for the Cursor IDE
+2. Development tools that enhance productivity for AeternoAI projects
 
 ## Contents
 
-- **`.devtools/`** - Development tools and utilities
-- **`.scripts/`** - Automation scripts and helpers
-- **`.cursor/`** - AI-assisted development configurations
+- **`.cursor/`** - Rules and configurations for Cursor IDE
+- **`.devtools/`** - Tools for generating documentation (e.g., README generator)
+- **`.scripts/`** - Utility scripts for the repository
 
 ## Getting Started
 
-Clone this repository to get started with AeternoAI's developer tools:
+Clone this repository to access the development tools and Cursor IDE configurations:
 
 ```bash
 git clone https://github.com/AeternoAI/devlib.git
 cd devlib
 ```
 
-## Features
-
-- 🚀 Productivity enhancers for common development tasks
-- 📊 Project templates and boilerplates
-- 🧰 Standardized tooling configurations
-- 📝 Documentation generators and helpers
-- 🔄 Workflow automation scripts
-
 ## Usage
 
-Refer to specific tool documentation in their respective directories for detailed usage instructions.
+### Cursor IDE Rules
 
-## Contributing
+The `.cursor` directory contains rules and configurations that enhance the Cursor IDE experience. These can be referenced in your projects to maintain consistent AI-assisted development patterns.
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'feat: Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+### README Generator
+
+The `.devtools` directory contains tools like `generate-readme.md` which provides instructions for generating comprehensive README files for codebases.
 
 ## License
 
