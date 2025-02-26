@@ -1,0 +1,951 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Project Structure
+
+```
+.
+├── .cursor
+│   └── rules
+│       ├── agent.mdc
+│       ├── git-commands.mdc
+│       ├── github-cli.mdc
+│       ├── memory-bank.mdc
+│       └── structure.mdc
+├── .github
+│   ├── pull_request_template.md
+│   └── workflows
+│       ├── lint.yml
+│       └── release.yml
+├── .gitignore
+├── .npmrc
+├── .scripts
+│   └── update_structure.sh
+├── .vscode
+│   ├── extensions.json
+│   ├── launch.json
+│   └── settings.json
+├── README.md
+├── apps
+│   ├── api
+│   │   ├── const
+│   │   │   ├── perm.enum.ts
+│   │   │   └── role.enum.ts
+│   │   ├── dtos
+│   │   │   └── id.dto.ts
+│   │   ├── env.ts
+│   │   ├── error.ts
+│   │   ├── exceptions
+│   │   │   ├── biz.ts
+│   │   │   ├── not-found.ts
+│   │   │   └── unauthorized.ts
+│   │   ├── index.node.ts
+│   │   ├── index.ts
+│   │   ├── middlewares
+│   │   │   ├── auth.ts
+│   │   │   └── permission.ts
+│   │   ├── package.json
+│   │   ├── routes
+│   │   │   ├── ai
+│   │   │   │   └── index.ts
+│   │   │   ├── chat
+│   │   │   │   └── index.ts
+│   │   │   ├── collaboration
+│   │   │   │   └── index.ts
+│   │   │   ├── files
+│   │   │   │   └── index.ts
+│   │   │   ├── organizations
+│   │   │   │   └── index.ts
+│   │   │   ├── ping
+│   │   │   │   ├── __tests__
+│   │   │   │   │   └── ping.test.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── pipelines
+│   │   │   │   └── index.ts
+│   │   │   ├── upload
+│   │   │   │   └── index.ts
+│   │   │   ├── users
+│   │   │   │   └── index.ts
+│   │   │   └── webhooks
+│   │   │       ├── index.ts
+│   │   │       └── workos
+│   │   │           ├── events.ts
+│   │   │           └── index.ts
+│   │   ├── services
+│   │   │   ├── __tests__
+│   │   │   │   └── s3.test.ts
+│   │   │   ├── files.ts
+│   │   │   ├── organizations.ts
+│   │   │   └── s3.ts
+│   │   ├── tsconfig.json
+│   │   ├── utils
+│   │   │   └── validator.ts
+│   │   └── vitest.config.mts
+│   ├── app
+│   │   ├── .env.example
+│   │   ├── .gitignore
+│   │   ├── __tests__
+│   │   │   └── index.test.tsx
+│   │   ├── app
+│   │   │   ├── (auth)
+│   │   │   │   ├── auth
+│   │   │   │   │   ├── callback
+│   │   │   │   │   │   └── route.ts
+│   │   │   │   │   └── redirect
+│   │   │   │   │       └── page.ts
+│   │   │   │   ├── organization-required
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── sign-in
+│   │   │   │       └── [[...sign-in]]
+│   │   │   │           └── page.tsx
+│   │   │   ├── (main)
+│   │   │   │   ├── analytics
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── error.tsx
+│   │   │   │   ├── knowledge-base
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── layout.tsx
+│   │   │   │   ├── not-found.tsx
+│   │   │   │   ├── page.tsx
+│   │   │   │   ├── settings
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── users
+│   │   │   │   │   ├── page.tsx
+│   │   │   │   │   └── style.css
+│   │   │   │   └── vault
+│   │   │   │       ├── (content)
+│   │   │   │       │   ├── @modal
+│   │   │   │       │   │   ├── (.)[id]
+│   │   │   │       │   │   │   ├── file-preview.tsx
+│   │   │   │       │   │   │   ├── modal.tsx
+│   │   │   │       │   │   │   ├── page.tsx
+│   │   │   │       │   │   │   └── preview-detail.tsx
+│   │   │   │       │   │   └── default.tsx
+│   │   │   │       │   ├── layout.tsx
+│   │   │   │       │   └── page.tsx
+│   │   │   │       ├── [id]
+│   │   │   │       │   ├── edit
+│   │   │   │       │   │   └── page.tsx
+│   │   │   │       │   ├── loading.tsx
+│   │   │   │       │   ├── page.tsx
+│   │   │   │       │   └── preview
+│   │   │   │       │       ├── header.tsx
+│   │   │   │       │       ├── page.tsx
+│   │   │   │       │       └── tab-init.tsx
+│   │   │   │       └── file
+│   │   │   │           └── new
+│   │   │   │               └── page.tsx
+│   │   │   ├── .well-known
+│   │   │   │   └── vercel
+│   │   │   │       └── flags
+│   │   │   │           └── route.ts
+│   │   │   ├── actions
+│   │   │   │   ├── files
+│   │   │   │   │   ├── create-blank.ts
+│   │   │   │   │   └── get.ts
+│   │   │   │   └── organizations
+│   │   │   │       └── get.ts
+│   │   │   ├── api
+│   │   │   │   ├── [[...route]]
+│   │   │   │   │   └── route.ts
+│   │   │   │   └── collaboration
+│   │   │   │       └── auth
+│   │   │   │           └── route.ts
+│   │   │   ├── apple-icon.png
+│   │   │   ├── global-error.tsx
+│   │   │   ├── globals.css
+│   │   │   ├── icon.png
+│   │   │   ├── layout.tsx
+│   │   │   ├── not-found.tsx
+│   │   │   ├── opengraph-image.png
+│   │   │   └── unauthorized.tsx
+│   │   ├── components
+│   │   │   ├── 404
+│   │   │   │   └── index.tsx
+│   │   │   ├── editor
+│   │   │   │   ├── index.tsx
+│   │   │   │   └── styles.css
+│   │   │   ├── error
+│   │   │   │   └── index.tsx
+│   │   │   ├── icons
+│   │   │   │   ├── file-icon
+│   │   │   │   │   ├── config.ts
+│   │   │   │   │   └── index.tsx
+│   │   │   │   └── file-type
+│   │   │   │       └── index.tsx
+│   │   │   ├── layout
+│   │   │   │   ├── app-header.tsx
+│   │   │   │   ├── app-main.tsx
+│   │   │   │   ├── app-search.tsx
+│   │   │   │   ├── app-sidebar.tsx
+│   │   │   │   ├── app-tabbar.css
+│   │   │   │   ├── app-tabbar.tsx
+│   │   │   │   ├── app-toolbar.tsx
+│   │   │   │   ├── close-handler
+│   │   │   │   │   ├── index.tsx
+│   │   │   │   │   └── styles.module.css
+│   │   │   │   ├── nav-actions.tsx
+│   │   │   │   ├── nav-main.tsx
+│   │   │   │   ├── nav-user
+│   │   │   │   │   ├── index.tsx
+│   │   │   │   │   └── sign-out.ts
+│   │   │   │   └── organization-switcher
+│   │   │   │       └── index.tsx
+│   │   │   ├── loading
+│   │   │   │   └── index.tsx
+│   │   │   └── posthog-identifier.tsx
+│   │   ├── constant
+│   │   │   └── nav.tsx
+│   │   ├── env.ts
+│   │   ├── features
+│   │   │   ├── assistant
+│   │   │   │   └── index.tsx
+│   │   │   ├── file-manager
+│   │   │   │   ├── file-detail
+│   │   │   │   │   └── index.tsx
+│   │   │   │   ├── file-editor
+│   │   │   │   │   ├── editor-viewer.tsx
+│   │   │   │   │   └── file-edit-unavailable.tsx
+│   │   │   │   ├── file-list
+│   │   │   │   │   ├── empty-status.tsx
+│   │   │   │   │   ├── file-filter.tsx
+│   │   │   │   │   ├── file-menu.tsx
+│   │   │   │   │   ├── file-skeleton.tsx
+│   │   │   │   │   ├── grid-view.tsx
+│   │   │   │   │   ├── index.tsx
+│   │   │   │   │   └── list-view.tsx
+│   │   │   │   ├── header
+│   │   │   │   │   ├── file-action-button
+│   │   │   │   │   │   ├── docu-gen-button.tsx
+│   │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   │   ├── new-file-button.tsx
+│   │   │   │   │   │   └── upload-file-button.tsx
+│   │   │   │   │   ├── files-search-bar.tsx
+│   │   │   │   │   └── index.tsx
+│   │   │   │   ├── hooks
+│   │   │   │   │   ├── use-file-navigation.ts
+│   │   │   │   │   ├── use-file-query.ts
+│   │   │   │   │   └── use-file-view-type.ts
+│   │   │   │   ├── index.tsx
+│   │   │   │   ├── upload-dock
+│   │   │   │   │   ├── index.tsx
+│   │   │   │   │   └── item.tsx
+│   │   │   │   └── view-toggle.tsx
+│   │   │   ├── file-viewer
+│   │   │   │   ├── index.tsx
+│   │   │   │   ├── not-support
+│   │   │   │   │   └── index.tsx
+│   │   │   │   └── renderer
+│   │   │   │       ├── index.ts
+│   │   │   │       ├── msdoc
+│   │   │   │       │   └── index.tsx
+│   │   │   │       ├── pdf
+│   │   │   │       │   ├── index.tsx
+│   │   │   │       │   └── use-resize-observer.ts
+│   │   │   │       └── txt
+│   │   │   │           └── index.tsx
+│   │   │   └── pipeline-manager
+│   │   │       ├── detail
+│   │   │       │   ├── index.tsx
+│   │   │       │   └── section-card.tsx
+│   │   │       ├── hooks
+│   │   │       │   └── use-pipeline.ts
+│   │   │       └── index.tsx
+│   │   ├── hooks
+│   │   │   └── core
+│   │   │       ├── use-double-click.ts
+│   │   │       └── use-tabs.ts
+│   │   ├── instrumentation.ts
+│   │   ├── lib
+│   │   │   ├── hono.ts
+│   │   │   └── swr.ts
+│   │   ├── liveblocks.config.ts
+│   │   ├── middleware.ts
+│   │   ├── next.config.ts
+│   │   ├── package.json
+│   │   ├── postcss.config.mjs
+│   │   ├── providers
+│   │   │   ├── get-query-client.ts
+│   │   │   ├── index.tsx
+│   │   │   └── query-client.tsx
+│   │   ├── public
+│   │   │   └── pdf
+│   │   │       └── sample.pdf
+│   │   ├── sentry.client.config.ts
+│   │   ├── services
+│   │   │   └── file.ts
+│   │   ├── stores
+│   │   │   ├── file
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── initialState.ts
+│   │   │   │   ├── reducers
+│   │   │   │   │   └── uploadFileList.ts
+│   │   │   │   ├── selectors.ts
+│   │   │   │   ├── slices
+│   │   │   │   │   ├── fileManager
+│   │   │   │   │   │   ├── action.ts
+│   │   │   │   │   │   ├── const.ts
+│   │   │   │   │   │   ├── index.ts
+│   │   │   │   │   │   ├── initialState.ts
+│   │   │   │   │   │   └── selectors.ts
+│   │   │   │   │   └── upload
+│   │   │   │   │       └── action.ts
+│   │   │   │   └── store.ts
+│   │   │   ├── middleware
+│   │   │   │   └── createDevtools.ts
+│   │   │   └── use-tab-store.ts
+│   │   ├── tailwind.config.ts
+│   │   ├── tsconfig.json
+│   │   ├── types
+│   │   │   ├── files
+│   │   │   │   ├── index.ts
+│   │   │   │   └── upload.ts
+│   │   │   └── next.ts
+│   │   ├── utils
+│   │   │   ├── download-file.ts
+│   │   │   ├── env.ts
+│   │   │   └── format.ts
+│   │   └── vitest.config.mts
+│   ├── docs
+│   │   ├── api-reference
+│   │   │   ├── endpoint
+│   │   │   │   ├── create.mdx
+│   │   │   │   ├── delete.mdx
+│   │   │   │   └── get.mdx
+│   │   │   ├── introduction.mdx
+│   │   │   └── openapi.json
+│   │   ├── development.mdx
+│   │   ├── essentials
+│   │   │   ├── code.mdx
+│   │   │   ├── images.mdx
+│   │   │   ├── markdown.mdx
+│   │   │   ├── navigation.mdx
+│   │   │   ├── reusable-snippets.mdx
+│   │   │   └── settings.mdx
+│   │   ├── favicon.svg
+│   │   ├── images
+│   │   │   ├── checks-passed.png
+│   │   │   ├── hero-dark.svg
+│   │   │   └── hero-light.svg
+│   │   ├── introduction.mdx
+│   │   ├── logo
+│   │   │   ├── dark.svg
+│   │   │   └── light.svg
+│   │   ├── mint.json
+│   │   ├── package.json
+│   │   ├── quickstart.mdx
+│   │   └── snippets
+│   │       └── snippet-intro.mdx
+│   ├── email
+│   │   ├── .gitignore
+│   │   ├── emails
+│   │   │   └── contact.tsx
+│   │   ├── package.json
+│   │   └── tsconfig.json
+│   ├── storybook
+│   │   ├── .gitignore
+│   │   ├── .storybook
+│   │   │   ├── main.ts
+│   │   │   ├── preview-head.html
+│   │   │   └── preview.tsx
+│   │   ├── README.md
+│   │   ├── next.config.ts
+│   │   ├── package.json
+│   │   ├── postcss.config.mjs
+│   │   ├── public
+│   │   │   └── favicon.ico
+│   │   ├── stories
+│   │   │   ├── accordion.stories.tsx
+│   │   │   ├── alert-dialog.stories.tsx
+│   │   │   ├── alert.stories.tsx
+│   │   │   ├── aspect-ratio.stories.tsx
+│   │   │   ├── avatar.stories.tsx
+│   │   │   ├── badge.stories.tsx
+│   │   │   ├── breadcrumb.stories.tsx
+│   │   │   ├── button.stories.tsx
+│   │   │   ├── calendar.stories.tsx
+│   │   │   ├── card.stories.tsx
+│   │   │   ├── carousel.stories.tsx
+│   │   │   ├── chart.stories.tsx
+│   │   │   ├── checkbox.stories.tsx
+│   │   │   ├── collapsible.stories.tsx
+│   │   │   ├── command.stories.tsx
+│   │   │   ├── context-menu.stories.tsx
+│   │   │   ├── dialog.stories.tsx
+│   │   │   ├── drawer.stories.tsx
+│   │   │   ├── dropdown-menu.stories.tsx
+│   │   │   ├── form.stories.tsx
+│   │   │   ├── hover-card.stories.tsx
+│   │   │   ├── input-otp.stories.tsx
+│   │   │   ├── input.stories.tsx
+│   │   │   ├── label.stories.tsx
+│   │   │   ├── menubar.stories.tsx
+│   │   │   ├── navigation-menu.stories.tsx
+│   │   │   ├── pagination.stories.tsx
+│   │   │   ├── popover.stories.tsx
+│   │   │   ├── progress.stories.tsx
+│   │   │   ├── radio-group.stories.tsx
+│   │   │   ├── resizable.stories.tsx
+│   │   │   ├── scroll-area.stories.tsx
+│   │   │   ├── select.stories.tsx
+│   │   │   ├── separator.stories.tsx
+│   │   │   ├── sheet.stories.tsx
+│   │   │   ├── sidebar.stories.tsx
+│   │   │   ├── skeleton.stories.tsx
+│   │   │   ├── slider.stories.tsx
+│   │   │   ├── sonner.stories.tsx
+│   │   │   ├── switch.stories.tsx
+│   │   │   ├── table.stories.tsx
+│   │   │   ├── tabs.stories.tsx
+│   │   │   ├── textarea.stories.tsx
+│   │   │   ├── toast.stories.tsx
+│   │   │   ├── toggle-group.stories.tsx
+│   │   │   ├── toggle.stories.tsx
+│   │   │   └── tooltip.stories.tsx
+│   │   ├── tailwind.config.ts
+│   │   └── tsconfig.json
+│   └── web
+│       ├── .env.example
+│       ├── .gitignore
+│       ├── .well-known
+│       │   └── vercel
+│       │       └── flags
+│       │           └── route.ts
+│       ├── app
+│       │   ├── (home)
+│       │   │   ├── components
+│       │   │   │   ├── cases.tsx
+│       │   │   │   ├── cta.tsx
+│       │   │   │   ├── faq.tsx
+│       │   │   │   ├── features.tsx
+│       │   │   │   ├── hero.tsx
+│       │   │   │   ├── stats.tsx
+│       │   │   │   └── testimonials.tsx
+│       │   │   └── page.tsx
+│       │   ├── apple-icon.png
+│       │   ├── blog
+│       │   │   ├── [slug]
+│       │   │   │   └── page.tsx
+│       │   │   ├── layout.tsx
+│       │   │   └── page.tsx
+│       │   ├── components
+│       │   │   ├── footer.tsx
+│       │   │   └── header
+│       │   │       ├── index.tsx
+│       │   │       └── logo.svg
+│       │   ├── contact
+│       │   │   ├── actions
+│       │   │   │   └── contact.tsx
+│       │   │   ├── components
+│       │   │   │   └── contact-form.tsx
+│       │   │   └── page.tsx
+│       │   ├── global-error.tsx
+│       │   ├── icon.png
+│       │   ├── layout.tsx
+│       │   ├── legal
+│       │   │   ├── [slug]
+│       │   │   │   └── page.tsx
+│       │   │   └── layout.tsx
+│       │   ├── opengraph-image.png
+│       │   ├── pricing
+│       │   │   └── page.tsx
+│       │   ├── robots.ts
+│       │   ├── sitemap.ts
+│       │   └── styles
+│       │       └── web.css
+│       ├── components
+│       │   └── sidebar.tsx
+│       ├── env.ts
+│       ├── instrumentation.ts
+│       ├── middleware.ts
+│       ├── next.config.ts
+│       ├── package.json
+│       ├── postcss.config.mjs
+│       ├── tailwind.config.ts
+│       ├── tsconfig.json
+│       └── vercel.json
+├── devtools
+│   └── generate-readme.md
+├── eslint.config.mjs
+├── package.json
+├── packages
+│   ├── ai
+│   │   ├── components
+│   │   │   ├── message.tsx
+│   │   │   └── thread.tsx
+│   │   ├── index.ts
+│   │   ├── keys.ts
+│   │   ├── lib
+│   │   │   ├── model.ts
+│   │   │   ├── provider.ts
+│   │   │   └── react.ts
+│   │   ├── package.json
+│   │   ├── tsconfig.json
+│   │   └── utils
+│   │       ├── __tests__
+│   │       │   └── anonymize.test.ts
+│   │       └── anonymize.ts
+│   ├── analytics
+│   │   ├── google.ts
+│   │   ├── index.tsx
+│   │   ├── keys.ts
+│   │   ├── package.json
+│   │   ├── posthog
+│   │   │   ├── client.tsx
+│   │   │   └── server.ts
+│   │   ├── tsconfig.json
+│   │   └── vercel.ts
+│   ├── auth
+│   │   ├── client.ts
+│   │   ├── keys.ts
+│   │   ├── middleware.ts
+│   │   ├── package.json
+│   │   ├── provider.tsx
+│   │   ├── server.ts
+│   │   └── tsconfig.json
+│   ├── cms
+│   │   ├── .env.example
+│   │   ├── components
+│   │   │   ├── body.tsx
+│   │   │   ├── feed.tsx
+│   │   │   ├── image.tsx
+│   │   │   ├── toc.tsx
+│   │   │   └── toolbar.tsx
+│   │   ├── index.ts
+│   │   ├── keys.ts
+│   │   ├── next-config.ts
+│   │   ├── package.json
+│   │   ├── tsconfig.json
+│   │   └── typescript-config.json
+│   ├── collaboration
+│   │   ├── auth.ts
+│   │   ├── config.ts
+│   │   ├── hooks.ts
+│   │   ├── keys.ts
+│   │   ├── package.json
+│   │   ├── room.tsx
+│   │   └── tsconfig.json
+│   ├── database
+│   │   ├── .env.example
+│   │   ├── .gitignore
+│   │   ├── drizzle-prod.config.ts
+│   │   ├── drizzle.config.ts
+│   │   ├── index.ts
+│   │   ├── keys.ts
+│   │   ├── migrations
+│   │   │   ├── 0000_dizzy_maverick.sql
+│   │   │   └── meta
+│   │   │       ├── 0000_snapshot.json
+│   │   │       └── _journal.json
+│   │   ├── package.json
+│   │   ├── schema
+│   │   │   ├── index.ts
+│   │   │   └── organization.ts
+│   │   ├── scripts
+│   │   │   └── migrate.ts
+│   │   ├── seed.ts
+│   │   ├── tsconfig.json
+│   │   └── utils
+│   │       ├── snowflake.ts
+│   │       └── with-pagination.ts
+│   ├── design-system
+│   │   ├── components
+│   │   │   ├── mode-toggle.tsx
+│   │   │   ├── prismui
+│   │   │   │   └── floating-action-panel.tsx
+│   │   │   └── ui
+│   │   │       ├── accordion.tsx
+│   │   │       ├── alert-dialog.tsx
+│   │   │       ├── alert.tsx
+│   │   │       ├── animated-tooltip.tsx
+│   │   │       ├── aspect-ratio.tsx
+│   │   │       ├── avatar.tsx
+│   │   │       ├── badge.tsx
+│   │   │       ├── breadcrumb.tsx
+│   │   │       ├── button.tsx
+│   │   │       ├── calendar.tsx
+│   │   │       ├── card.tsx
+│   │   │       ├── carousel.tsx
+│   │   │       ├── chart.tsx
+│   │   │       ├── checkbox.tsx
+│   │   │       ├── collapsible.tsx
+│   │   │       ├── command.tsx
+│   │   │       ├── context-menu.tsx
+│   │   │       ├── dialog.tsx
+│   │   │       ├── drawer.tsx
+│   │   │       ├── dropdown-menu.tsx
+│   │   │       ├── form.tsx
+│   │   │       ├── hover-card.tsx
+│   │   │       ├── input-otp.tsx
+│   │   │       ├── input.tsx
+│   │   │       ├── label.tsx
+│   │   │       ├── menubar.tsx
+│   │   │       ├── navigation-menu.tsx
+│   │   │       ├── pagination.tsx
+│   │   │       ├── popover.tsx
+│   │   │       ├── progress.tsx
+│   │   │       ├── radio-group.tsx
+│   │   │       ├── resizable.tsx
+│   │   │       ├── scroll-area.tsx
+│   │   │       ├── select.tsx
+│   │   │       ├── separator.tsx
+│   │   │       ├── sheet.tsx
+│   │   │       ├── sidebar.tsx
+│   │   │       ├── skeleton.tsx
+│   │   │       ├── slider.tsx
+│   │   │       ├── sonner.tsx
+│   │   │       ├── switch.tsx
+│   │   │       ├── table.tsx
+│   │   │       ├── tabs.tsx
+│   │   │       ├── textarea.tsx
+│   │   │       ├── toast.tsx
+│   │   │       ├── toaster.tsx
+│   │   │       ├── toggle-group.tsx
+│   │   │       ├── toggle.tsx
+│   │   │       ├── tooltip.tsx
+│   │   │       ├── use-toast.ts
+│   │   │       └── visually-hidden.tsx
+│   │   ├── components.json
+│   │   ├── hooks
+│   │   │   ├── use-mobile.tsx
+│   │   │   └── use-toast.ts
+│   │   ├── index.tsx
+│   │   ├── lib
+│   │   │   ├── fonts.ts
+│   │   │   └── utils.ts
+│   │   ├── package.json
+│   │   ├── postcss.config.mjs
+│   │   ├── providers
+│   │   │   └── theme.tsx
+│   │   ├── styles
+│   │   │   └── globals.css
+│   │   └── tsconfig.json
+│   ├── editor
+│   │   ├── README.md
+│   │   ├── components
+│   │   │   ├── Sidebar
+│   │   │   │   ├── Sidebar.tsx
+│   │   │   │   └── index.tsx
+│   │   │   ├── TableOfContents
+│   │   │   │   ├── TableOfContents.tsx
+│   │   │   │   └── index.tsx
+│   │   │   ├── editor
+│   │   │   │   ├── BlockEditor.tsx
+│   │   │   │   ├── components
+│   │   │   │   │   ├── EditorHeader.tsx
+│   │   │   │   │   └── EditorInfo.tsx
+│   │   │   │   └── types.tsx
+│   │   │   ├── menus
+│   │   │   │   ├── ContentItemMenu
+│   │   │   │   │   ├── ContentItemMenu.tsx
+│   │   │   │   │   ├── hooks
+│   │   │   │   │   │   ├── useContentItemActions.tsx
+│   │   │   │   │   │   └── useData.tsx
+│   │   │   │   │   └── index.tsx
+│   │   │   │   ├── LinkMenu
+│   │   │   │   │   ├── LinkMenu.tsx
+│   │   │   │   │   └── index.tsx
+│   │   │   │   ├── TextMenu
+│   │   │   │   │   ├── TextMenu.tsx
+│   │   │   │   │   ├── components
+│   │   │   │   │   │   ├── AIDropdown.tsx
+│   │   │   │   │   │   ├── ContentTypePicker.tsx
+│   │   │   │   │   │   ├── EditLinkPopover.tsx
+│   │   │   │   │   │   ├── FontFamilyPicker.tsx
+│   │   │   │   │   │   └── FontSizePicker.tsx
+│   │   │   │   │   ├── hooks
+│   │   │   │   │   │   ├── useTextmenuCommands.ts
+│   │   │   │   │   │   ├── useTextmenuContentTypes.ts
+│   │   │   │   │   │   └── useTextmenuStates.ts
+│   │   │   │   │   └── index.tsx
+│   │   │   │   ├── index.ts
+│   │   │   │   └── types.ts
+│   │   │   ├── panels
+│   │   │   │   ├── Colorpicker
+│   │   │   │   │   ├── ColorButton.tsx
+│   │   │   │   │   ├── Colorpicker.tsx
+│   │   │   │   │   └── index.tsx
+│   │   │   │   ├── LinkEditorPanel
+│   │   │   │   │   ├── LinkEditorPanel.tsx
+│   │   │   │   │   └── index.tsx
+│   │   │   │   ├── LinkPreviewPanel
+│   │   │   │   │   ├── LinkPreviewPanel.tsx
+│   │   │   │   │   └── index.tsx
+│   │   │   │   └── index.tsx
+│   │   │   └── ui
+│   │   │       ├── Dropdown
+│   │   │       │   ├── Dropdown.tsx
+│   │   │       │   └── index.tsx
+│   │   │       ├── Icon.tsx
+│   │   │       ├── Loader
+│   │   │       │   ├── Loader.tsx
+│   │   │       │   ├── index.ts
+│   │   │       │   └── types.ts
+│   │   │       ├── Panel
+│   │   │       │   └── index.tsx
+│   │   │       ├── PopoverMenu.tsx
+│   │   │       ├── Spinner
+│   │   │       │   ├── Spinner.tsx
+│   │   │       │   └── index.tsx
+│   │   │       ├── Surface.tsx
+│   │   │       ├── Toggle
+│   │   │       │   ├── Toggle.tsx
+│   │   │       │   └── index.tsx
+│   │   │       └── Toolbar.tsx
+│   │   ├── extensions
+│   │   │   ├── Ai
+│   │   │   │   ├── Ai.ts
+│   │   │   │   ├── AiFree.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── AiImage
+│   │   │   │   ├── AiImage.tsx
+│   │   │   │   ├── AiImageFree.ts
+│   │   │   │   ├── components
+│   │   │   │   │   └── AiImageView.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── AiWriter
+│   │   │   │   ├── AiWriter.tsx
+│   │   │   │   ├── AiWriterFree.ts
+│   │   │   │   ├── components
+│   │   │   │   │   └── AiWriterView.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── BlockquoteFigure
+│   │   │   │   ├── BlockquoteFigure.ts
+│   │   │   │   ├── Quote
+│   │   │   │   │   ├── Quote.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   ├── QuoteCaption
+│   │   │   │   │   ├── QuoteCaption.ts
+│   │   │   │   │   └── index.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── CodeBlock
+│   │   │   │   ├── CodeBlock.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── Document
+│   │   │   │   ├── Document.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── EmojiSuggestion
+│   │   │   │   ├── components
+│   │   │   │   │   └── EmojiList.tsx
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── suggestion.ts
+│   │   │   │   └── types.ts
+│   │   │   ├── Figcaption
+│   │   │   │   ├── Figcaption.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── Figure
+│   │   │   │   ├── Figure.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── FontSize
+│   │   │   │   ├── FontSize.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── Heading
+│   │   │   │   ├── Heading.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── HorizontalRule
+│   │   │   │   ├── HorizontalRule.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── Image
+│   │   │   │   ├── Image.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── ImageBlock
+│   │   │   │   ├── ImageBlock.ts
+│   │   │   │   ├── components
+│   │   │   │   │   ├── ImageBlockMenu.tsx
+│   │   │   │   │   ├── ImageBlockView.tsx
+│   │   │   │   │   └── ImageBlockWidth.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── ImageUpload
+│   │   │   │   ├── ImageUpload.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── view
+│   │   │   │       ├── ImageUpload.tsx
+│   │   │   │       ├── ImageUploader.tsx
+│   │   │   │       ├── hooks.ts
+│   │   │   │       └── index.tsx
+│   │   │   ├── Link
+│   │   │   │   ├── Link.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── MultiColumn
+│   │   │   │   ├── Column.ts
+│   │   │   │   ├── Columns.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── menus
+│   │   │   │       ├── ColumnsMenu.tsx
+│   │   │   │       └── index.ts
+│   │   │   ├── Selection
+│   │   │   │   ├── Selection.ts
+│   │   │   │   └── index.ts
+│   │   │   ├── SlashCommand
+│   │   │   │   ├── CommandButton.tsx
+│   │   │   │   ├── MenuList.tsx
+│   │   │   │   ├── SlashCommand.ts
+│   │   │   │   ├── groups.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   └── types.ts
+│   │   │   ├── Table
+│   │   │   │   ├── Cell.ts
+│   │   │   │   ├── Header.ts
+│   │   │   │   ├── Row.ts
+│   │   │   │   ├── Table.ts
+│   │   │   │   ├── index.ts
+│   │   │   │   ├── menus
+│   │   │   │   │   ├── TableColumn
+│   │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   │   └── utils.ts
+│   │   │   │   │   ├── TableRow
+│   │   │   │   │   │   ├── index.tsx
+│   │   │   │   │   │   └── utils.ts
+│   │   │   │   │   └── index.tsx
+│   │   │   │   └── utils.ts
+│   │   │   ├── TableOfContentsNode
+│   │   │   │   ├── TableOfContentsNode.tsx
+│   │   │   │   └── index.ts
+│   │   │   ├── TrailingNode
+│   │   │   │   ├── index.ts
+│   │   │   │   └── trailing-node.ts
+│   │   │   ├── extension-kit.ts
+│   │   │   └── index.ts
+│   │   ├── hooks
+│   │   │   ├── useBlockEditor.ts
+│   │   │   ├── useCollaboration.ts
+│   │   │   └── useSidebar.tsx
+│   │   ├── index.tsx
+│   │   ├── keys.ts
+│   │   ├── lib
+│   │   │   ├── api.ts
+│   │   │   ├── constants.tsx
+│   │   │   ├── utils
+│   │   │   │   ├── cssVar.ts
+│   │   │   │   ├── getConnectionText.ts
+│   │   │   │   ├── getRenderContainer.ts
+│   │   │   │   ├── isCustomNodeSelected.ts
+│   │   │   │   └── isTextSelected.ts
+│   │   │   └── utils.ts
+│   │   ├── package.json
+│   │   ├── styles
+│   │   │   ├── index.css
+│   │   │   └── partials
+│   │   │       ├── animations.css
+│   │   │       ├── blocks.css
+│   │   │       ├── code.css
+│   │   │       ├── collab.css
+│   │   │       ├── lists.css
+│   │   │       ├── placeholder.css
+│   │   │       ├── table.css
+│   │   │       └── typography.css
+│   │   └── tsconfig.json
+│   ├── email
+│   │   ├── index.ts
+│   │   ├── keys.ts
+│   │   ├── package.json
+│   │   ├── templates
+│   │   │   └── contact.tsx
+│   │   └── tsconfig.json
+│   ├── feature-flags
+│   │   ├── access.ts
+│   │   ├── components
+│   │   │   └── toolbar.tsx
+│   │   ├── index.ts
+│   │   ├── keys.ts
+│   │   ├── lib
+│   │   │   ├── create-flag.ts
+│   │   │   └── toolbar.ts
+│   │   ├── package.json
+│   │   └── tsconfig.json
+│   ├── next-config
+│   │   ├── index.ts
+│   │   ├── keys.ts
+│   │   ├── package.json
+│   │   └── tsconfig.json
+│   ├── observability
+│   │   ├── client.ts
+│   │   ├── error.ts
+│   │   ├── instrumentation.ts
+│   │   ├── keys.ts
+│   │   ├── log.ts
+│   │   ├── next-config.ts
+│   │   ├── package.json
+│   │   ├── status
+│   │   │   ├── index.tsx
+│   │   │   └── types.ts
+│   │   └── tsconfig.json
+│   ├── payments
+│   │   ├── ai.ts
+│   │   ├── index.ts
+│   │   ├── keys.ts
+│   │   ├── package.json
+│   │   └── tsconfig.json
+│   ├── rate-limit
+│   │   ├── index.ts
+│   │   ├── keys.ts
+│   │   └── package.json
+│   ├── security
+│   │   ├── index.ts
+│   │   ├── keys.ts
+│   │   ├── middleware.ts
+│   │   ├── package.json
+│   │   └── tsconfig.json
+│   ├── seo
+│   │   ├── json-ld.tsx
+│   │   ├── metadata.ts
+│   │   ├── package.json
+│   │   └── tsconfig.json
+│   ├── shared
+│   │   ├── package.json
+│   │   ├── tsconfig.json
+│   │   └── utils
+│   │       ├── env.ts
+│   │       ├── file.server.ts
+│   │       ├── file.ts
+│   │       ├── hash.ts
+│   │       ├── id.ts
+│   │       ├── index.ts
+│   │       └── server.ts
+│   ├── storage
+│   │   ├── client.ts
+│   │   ├── index.ts
+│   │   ├── keys.ts
+│   │   ├── package.json
+│   │   └── tsconfig.json
+│   ├── tailwind-config
+│   │   ├── config.ts
+│   │   ├── index.ts
+│   │   ├── package.json
+│   │   ├── tailwind.config.ts
+│   │   ├── tsconfig.json
+│   │   └── typography.config.ts
+│   ├── testing
+│   │   ├── index.mjs
+│   │   ├── package.json
+│   │   └── tsconfig.json
+│   ├── typescript-config
+│   │   ├── base.json
+│   │   ├── nextjs.json
+│   │   ├── package.json
+│   │   └── react-library.json
+│   └── webhooks
+│       ├── index.ts
+│       ├── keys.ts
+│       ├── lib
+│       │   └── svix.ts
+│       ├── package.json
+│       └── tsconfig.json
+├── patches
+│   ├── drizzle-kit@0.29.0.patch
+│   └── drizzle-orm@0.38.3.patch
+├── pnpm-lock.yaml
+├── pnpm-workspace.yaml
+├── turbo
+│   └── generators
+│       ├── config.ts
+│       ├── package.json
+│       └── templates
+│           ├── package.json.hbs
+│           └── tsconfig.json.hbs
+└── turbo.json
+
+257 directories, 683 files
+```

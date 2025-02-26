@@ -1,0 +1,364 @@
+---
+description: GitHub CLI commands
+globs: 
+alwaysApply: true
+---
+# Complete GitHub CLI Commands Reference
+
+## Introduction
+
+GitHub CLI (`gh`) is the official command-line tool for GitHub that brings pull requests, issues, and other GitHub concepts to your terminal. This reference covers all available commands as of February 2025.
+
+## Installation
+
+```bash
+# macOS
+brew install gh
+
+# Windows
+winget install --id GitHub.cli
+
+# Debian/Ubuntu
+apt install gh
+
+# Fedora/CentOS
+dnf install gh
+```
+
+## Core Commands
+
+### Authentication
+
+| Command | Description |
+|---------|-------------|
+| `gh auth login` | Authenticate with GitHub |
+| `gh auth logout` | Log out of GitHub |
+| `gh auth refresh` | Refresh stored authentication credentials |
+| `gh auth setup-git` | Configure git to use GitHub CLI as credential helper |
+| `gh auth status` | View authentication status |
+| `gh auth token` | Display or generate an authentication token |
+
+### Configuration
+
+| Command | Description |
+|---------|-------------|
+| `gh config get` | Get a configuration value |
+| `gh config set` | Set a configuration value |
+| `gh config list` | List all configuration settings |
+
+### Repository Management
+
+| Command | Description |
+|---------|-------------|
+| `gh repo create` | Create a new repository |
+| `gh repo clone` | Clone a repository locally |
+| `gh repo view` | View repository details |
+| `gh repo fork` | Create a fork of a repository |
+| `gh repo list` | List repositories owned by user or organization |
+| `gh repo delete` | Delete a repository |
+| `gh repo rename` | Rename a repository |
+| `gh repo archive` | Archive a repository |
+| `gh repo edit` | Edit repository settings |
+| `gh repo sync` | Sync a repository |
+
+### Pull Requests
+
+| Command | Description |
+|---------|-------------|
+| `gh pr create` | Create a pull request |
+| `gh pr checkout` | Check out a pull request locally |
+| `gh pr view` | View a pull request |
+| `gh pr list` | List pull requests |
+| `gh pr status` | Show status of relevant pull requests |
+| `gh pr close` | Close a pull request |
+| `gh pr merge` | Merge a pull request |
+| `gh pr comment` | Add a comment to a pull request |
+| `gh pr diff` | View changes in a pull request |
+| `gh pr ready` | Mark a pull request as ready for review |
+| `gh pr review` | Add a review to a pull request |
+| `gh pr checks` | View CI status for a pull request |
+| `gh pr edit` | Edit a pull request |
+| `gh pr reopen` | Reopen a closed pull request |
+
+### Issues
+
+| Command | Description |
+|---------|-------------|
+| `gh issue create` | Create a new issue |
+| `gh issue list` | List issues |
+| `gh issue view` | View an issue |
+| `gh issue status` | Show status of relevant issues |
+| `gh issue close` | Close an issue |
+| `gh issue reopen` | Reopen a closed issue |
+| `gh issue comment` | Add a comment to an issue |
+| `gh issue edit` | Edit an issue |
+| `gh issue transfer` | Transfer an issue to another repository |
+| `gh issue pin` | Pin an issue |
+| `gh issue unpin` | Unpin an issue |
+| `gh issue develop` | Create a branch for an issue |
+| `gh issue delete` | Delete an issue |
+
+### Gists
+
+| Command | Description |
+|---------|-------------|
+| `gh gist create` | Create a new gist |
+| `gh gist list` | List gists |
+| `gh gist view` | View a gist |
+| `gh gist edit` | Edit a gist |
+| `gh gist clone` | Clone a gist locally |
+| `gh gist delete` | Delete a gist |
+
+### Releases
+
+| Command | Description |
+|---------|-------------|
+| `gh release create` | Create a new release |
+| `gh release list` | List releases |
+| `gh release view` | View information about a release |
+| `gh release download` | Download release assets |
+| `gh release upload` | Upload assets to a release |
+| `gh release delete` | Delete a release |
+| `gh release edit` | Edit a release |
+
+### Workflows & Actions
+
+| Command | Description |
+|---------|-------------|
+| `gh workflow list` | List workflows |
+| `gh workflow view` | View a workflow |
+| `gh workflow run` | Trigger a workflow run |
+| `gh workflow disable` | Disable a workflow |
+| `gh workflow enable` | Enable a workflow |
+| `gh run list` | List workflow runs |
+| `gh run view` | View a workflow run |
+| `gh run watch` | Watch a workflow run |
+| `gh run download` | Download artifacts from a workflow run |
+| `gh run rerun` | Rerun a workflow run |
+| `gh run cancel` | Cancel a workflow run |
+
+### Projects
+
+| Command | Description |
+|---------|-------------|
+| `gh project list` | List projects |
+| `gh project view` | View a project |
+| `gh project create` | Create a new project |
+| `gh project close` | Close a project |
+| `gh project delete` | Delete a project |
+| `gh project edit` | Edit a project |
+
+### Codespaces
+
+| Command | Description |
+|---------|-------------|
+| `gh codespace list` | List codespaces |
+| `gh codespace create` | Create a codespace |
+| `gh codespace ssh` | SSH into a codespace |
+| `gh codespace ports` | List codespace ports |
+| `gh codespace stop` | Stop a codespace |
+| `gh codespace delete` | Delete a codespace |
+| `gh codespace cp` | Copy files between local and codespace |
+| `gh codespace jupyter` | Open Jupyter Notebook in codespace |
+| `gh codespace logs` | View codespace logs |
+| `gh codespace rebuild` | Rebuild a codespace |
+| `gh codespace code` | Open codespace in VS Code |
+| `gh codespace ports forward` | Forward ports from codespace to localhost |
+| `gh codespace ports visibility` | Set port visibility |
+
+### Organizations
+
+| Command | Description |
+|---------|-------------|
+| `gh org list` | List organizations |
+| `gh org view` | View organization details |
+
+### Secret Management
+
+| Command | Description |
+|---------|-------------|
+| `gh secret list` | List secrets |
+| `gh secret set` | Create or update a secret |
+| `gh secret delete` | Delete a secret |
+
+### Variables
+
+| Command | Description |
+|---------|-------------|
+| `gh variable list` | List variables |
+| `gh variable set` | Create or update a variable |
+| `gh variable delete` | Delete a variable |
+
+### Alias Management
+
+| Command | Description |
+|---------|-------------|
+| `gh alias list` | List command aliases |
+| `gh alias set` | Create a command alias |
+| `gh alias delete` | Delete a command alias |
+
+### Extensions
+
+| Command | Description |
+|---------|-------------|
+| `gh extension list` | List installed extensions |
+| `gh extension install` | Install a GitHub CLI extension |
+| `gh extension remove` | Remove an installed extension |
+| `gh extension upgrade` | Upgrade installed extensions |
+| `gh extension create` | Create a new extension |
+| `gh extension search` | Search for extensions |
+
+### Search
+
+| Command | Description |
+|---------|-------------|
+| `gh search repos` | Search for repositories |
+| `gh search issues` | Search for issues |
+| `gh search prs` | Search for pull requests |
+| `gh search code` | Search for code |
+| `gh search commits` | Search for commits |
+| `gh search users` | Search for users |
+
+### Environments
+
+| Command | Description |
+|---------|-------------|
+| `gh environment list` | List environments |
+| `gh environment view` | View environment details |
+
+### SSH Keys
+
+| Command | Description |
+|---------|-------------|
+| `gh ssh-key list` | List SSH keys |
+| `gh ssh-key add` | Add an SSH key |
+| `gh ssh-key delete` | Delete an SSH key |
+
+### GPG Keys
+
+| Command | Description |
+|---------|-------------|
+| `gh gpg-key list` | List GPG keys |
+| `gh gpg-key add` | Add a GPG key |
+| `gh gpg-key delete` | Delete a GPG key |
+
+### Labels
+
+| Command | Description |
+|---------|-------------|
+| `gh label list` | List labels |
+| `gh label create` | Create a label |
+| `gh label edit` | Edit a label |
+| `gh label delete` | Delete a label |
+| `gh label clone` | Clone labels from another repository |
+
+### API Access
+
+| Command | Description |
+|---------|-------------|
+| `gh api` | Make an authenticated request to the GitHub API |
+| `gh api graphql` | Make a GraphQL query to the GitHub API |
+
+### Misc Commands
+
+| Command | Description |
+|---------|-------------|
+| `gh completion` | Generate shell completion scripts |
+| `gh help` | Get help about any command |
+| `gh status` | View GitHub service status |
+| `gh browse` | Open repository in browser |
+| `gh cache` | Manage GitHub Actions caches |
+| `gh completion` | Generate shell completion scripts |
+
+## Common Options
+
+Most commands accept these flags:
+
+| Flag | Description |
+|------|-------------|
+| `--help, -h` | Show help for command |
+| `--repo, -R` | Specify repository using OWNER/REPO format |
+| `--web, -w` | Open in web browser |
+| `--json` | Output as JSON |
+| `--jq` | Query to filter JSON output |
+| `--debug` | Show verbose debug output |
+
+## Examples
+
+### Creating a Pull Request
+
+```bash
+# Create a PR from the current branch
+gh pr create
+
+# Create a PR with title and body
+gh pr create --title "Fix login bug" --body "This PR fixes the login issue"
+
+# Create a draft PR
+gh pr create --draft
+```
+
+### Working with Issues
+
+```bash
+# List open issues assigned to you
+gh issue list --assignee @me
+
+# Create an issue
+gh issue create --title "New feature request" --body "Please add this feature"
+
+# Close an issue with a comment
+gh issue close 123 --comment "Fixed in PR #456"
+```
+
+### Repository Operations
+
+```bash
+# Clone a repository
+gh repo clone owner/repo
+
+# Create a new repository
+gh repo create my-project --public
+
+# View repository details
+gh repo view owner/repo
+```
+
+### GitHub Actions
+
+```bash
+# List recent workflow runs
+gh run list
+
+# Watch a workflow run in progress
+gh run watch
+
+# Manually trigger a workflow
+gh workflow run workflow-name.yml
+```
+
+## Advanced Usage
+
+### Using with Git Aliases
+
+```bash
+git config --global alias.pr 'gh pr create'
+```
+
+### Writing Scripts
+
+```bash
+# Get the URL of the current repository
+repo_url=$(gh repo view --json url -q .url)
+
+# List all pull requests and extract numbers
+pr_numbers=$(gh pr list --json number -q '.[].number')
+```
+
+### Environment Variables
+
+- `GH_TOKEN`: Authentication token
+- `GH_HOST`: GitHub hostname for GitHub Enterprise
+- `GH_REPO`: Repository in OWNER/REPO format
+- `GH_EDITOR`: Editor to use for authoring
+- `GH_BROWSER`: Browser to use for web content

@@ -1,0 +1,517 @@
+---
+description: git commands for CLI operations
+globs: 
+alwaysApply: true
+---
+# Complete Git Commands Reference
+
+## Introduction
+
+Git is a distributed version control system designed to handle everything from small to very large projects with speed and efficiency. This reference covers all core Git commands, organized by category.
+
+## Installation
+
+```bash
+# macOS
+brew install git
+
+# Debian/Ubuntu
+apt install git
+
+# Fedora/CentOS
+dnf install git
+
+# Windows
+# Download from https://git-scm.com/download/win
+```
+
+## Setup and Configuration
+
+### Initial Setup
+
+| Command | Description |
+|---------|-------------|
+| `git config --global user.name "Your Name"` | Set your name |
+| `git config --global user.email "your.email@example.com"` | Set your email |
+| `git config --global core.editor "editor-name"` | Set default text editor |
+| `git config --global init.defaultBranch main` | Set default branch name |
+| `git config --global color.ui auto` | Enable colorized output |
+
+### Configuration Management
+
+| Command | Description |
+|---------|-------------|
+| `git config --list` | List all configuration settings |
+| `git config --global --list` | List global configuration settings |
+| `git config --local --list` | List repository-specific settings |
+| `git config --get <key>` | Get specific configuration value |
+| `git config --unset <key>` | Remove configuration entry |
+| `git config --global alias.<shortcut> <command>` | Create command alias |
+
+## Repository Basics
+
+### Creating Repositories
+
+| Command | Description |
+|---------|-------------|
+| `git init` | Initialize a new local Git repository |
+| `git init --bare` | Initialize a bare repository |
+| `git clone <url>` | Clone a repository |
+| `git clone --depth <depth> <url>` | Clone with limited history |
+| `git clone --branch <branch> <url>` | Clone specific branch |
+| `git clone --recurse-submodules <url>` | Clone with submodules |
+
+### Getting Information
+
+| Command | Description |
+|---------|-------------|
+| `git status` | Show working tree status |
+| `git status -s` | Show short status output |
+| `git log` | Show commit history |
+| `git log --oneline` | Show compact commit history |
+| `git log --graph` | Show graphical commit history |
+| `git log --author="name"` | Filter by author |
+| `git log --since="date"` | Filter by date |
+| `git log -p` | Show patches (diffs) |
+| `git log --stat` | Show statistics |
+| `git log -n <number>` | Limit number of commits shown |
+| `git show <commit>` | Show commit details |
+| `git show <commit>:<file>` | Show file at specific commit |
+| `git diff` | Show changes between working directory and staging |
+| `git diff --staged` | Show changes between staging and last commit |
+| `git diff <commit1> <commit2>` | Show changes between two commits |
+| `git diff <commit1>..<commit2>` | Same as above |
+| `git diff <branch1>..<branch2>` | Show changes between two branches |
+| `git diff --name-only` | Show only filenames that changed |
+| `git diff --name-status` | Show changed files with status |
+
+## Basic Snapshotting
+
+### Adding and Removing Files
+
+| Command | Description |
+|---------|-------------|
+| `git add <file>` | Add file to staging area |
+| `git add <directory>` | Add directory to staging area |
+| `git add .` | Add all changed files to staging area |
+| `git add -i` | Add files interactively |
+| `git add -p` | Add files in patches |
+| `git add -u` | Add only tracked files |
+| `git rm <file>` | Remove file from working directory and staging area |
+| `git rm --cached <file>` | Remove file from staging area only |
+| `git rm -r <directory>` | Remove directory recursively |
+| `git mv <old-path> <new-path>` | Move or rename file |
+
+### Committing Changes
+
+Note: Your commit message style should be `feat` `chore` `style` `doc` or `xxx` as you see fit acompannied by (xxx). Without the backtick symbol, of course. For example:
+
+feat(xxx): xxx
+
+- xxx
+
+- xxx
+
+- xxx
+
+| Command | Description |
+|---------|-------------|
+| `git commit` | Commit staged changes |
+| `git commit -m "message"` | Commit with message |
+| `git commit -a` | Add and commit all tracked files |
+| `git commit -am "message"` | Add and commit all tracked files with message |
+| `git commit --amend` | Amend previous commit |
+| `git commit --amend --no-edit` | Amend without changing message |
+| `git commit --fixup <commit>` | Create fixup commit |
+| `git commit --squash <commit>` | Create squash commit |
+
+### Staging and Unstaging
+
+| Command | Description |
+|---------|-------------|
+| `git reset <file>` | Unstage file, keep working directory changes |
+| `git reset` | Unstage all files, keep working directory changes |
+| `git restore --staged <file>` | Unstage file (new in Git 2.23+) |
+| `git checkout -- <file>` | Discard changes in working directory |
+| `git restore <file>` | Discard changes in working directory (new in Git 2.23+) |
+| `git clean -f` | Remove untracked files |
+| `git clean -fd` | Remove untracked files and directories |
+| `git clean -n` | Show what would be removed |
+
+## Branching and Merging
+
+### Branch Management
+
+| Command | Description |
+|---------|-------------|
+| `git branch` | List local branches |
+| `git branch -r` | List remote branches |
+| `git branch -a` | List all branches (local and remote) |
+| `git branch <branch-name>` | Create new branch |
+| `git branch -d <branch-name>` | Delete branch (if merged) |
+| `git branch -D <branch-name>` | Force delete branch |
+| `git branch -m <old-name> <new-name>` | Rename branch |
+| `git branch --merged` | List merged branches |
+| `git branch --no-merged` | List unmerged branches |
+| `git branch -vv` | List branches with tracking info |
+
+### Switching Branches
+
+| Command | Description |
+|---------|-------------|
+| `git checkout <branch>` | Switch to branch |
+| `git checkout -b <new-branch>` | Create and switch to new branch |
+| `git checkout -B <branch>` | Create/reset and switch to branch |
+| `git checkout --track <remote>/<branch>` | Track remote branch |
+| `git checkout -` | Switch to previous branch |
+| `git switch <branch>` | Switch to branch (new in Git 2.23+) |
+| `git switch -c <new-branch>` | Create and switch to new branch (new in Git 2.23+) |
+| `git switch -` | Switch to previous branch (new in Git 2.23+) |
+
+### Merging
+
+| Command | Description |
+|---------|-------------|
+| `git merge <branch>` | Merge branch into current branch |
+| `git merge --no-ff <branch>` | Create a merge commit even if fast-forward is possible |
+| `git merge --ff-only <branch>` | Fast-forward only, abort if not possible |
+| `git merge --abort` | Abort a merge in progress |
+| `git merge --continue` | Continue a merge after resolving conflicts |
+| `git merge-base <branch1> <branch2>` | Find common ancestor of branches |
+| `git mergetool` | Run merge conflict resolution tools |
+
+### Rebasing
+
+| Command | Description |
+|---------|-------------|
+| `git rebase <branch>` | Rebase current branch onto another branch |
+| `git rebase -i <commit>` | Interactive rebase |
+| `git rebase --continue` | Continue rebase after resolving conflicts |
+| `git rebase --abort` | Abort a rebase in progress |
+| `git rebase --skip` | Skip current patch and continue |
+| `git rebase --onto <newbase> <oldbase> <branch>` | Rebase onto new base |
+
+### Cherry-Picking
+
+| Command | Description |
+|---------|-------------|
+| `git cherry-pick <commit>` | Apply changes from existing commit |
+| `git cherry-pick <commit1> <commit2>` | Cherry-pick multiple commits |
+| `git cherry-pick --continue` | Continue cherry-pick after resolving conflicts |
+| `git cherry-pick --abort` | Abort cherry-pick in progress |
+| `git cherry-pick --no-commit <commit>` | Apply changes without committing |
+
+## Sharing and Updating
+
+### Remote Repositories
+
+| Command | Description |
+|---------|-------------|
+| `git remote` | List remote repositories |
+| `git remote -v` | List remote repositories with URLs |
+| `git remote add <name> <url>` | Add remote repository |
+| `git remote remove <name>` | Remove remote repository |
+| `git remote rename <old> <new>` | Rename remote repository |
+| `git remote set-url <name> <url>` | Change remote URL |
+| `git remote show <name>` | Show information about remote |
+| `git remote prune <name>` | Remove deleted remote branches |
+
+### Fetching and Pulling
+
+| Command | Description |
+|---------|-------------|
+| `git fetch <remote>` | Download objects and refs from remote |
+| `git fetch --all` | Fetch from all remotes |
+| `git fetch --prune` | Remove remote-tracking branches that no longer exist on remote |
+| `git pull` | Fetch and merge changes |
+| `git pull --rebase` | Fetch and rebase changes |
+| `git pull --ff-only` | Fast-forward only, abort if not possible |
+| `git pull --no-commit` | Fetch and merge without committing |
+
+### Pushing
+
+| Command | Description |
+|---------|-------------|
+| `git push <remote> <branch>` | Push branch to remote |
+| `git push -u <remote> <branch>` | Push and set upstream |
+| `git push --force` | Force push (use with caution) |
+| `git push --force-with-lease` | Force push with safety check |
+| `git push --all` | Push all branches |
+| `git push --tags` | Push all tags |
+| `git push <remote> --delete <branch>` | Delete remote branch |
+| `git push <remote> :<branch>` | Delete remote branch (alternative) |
+
+## Stashing
+
+| Command | Description |
+|---------|-------------|
+| `git stash` | Stash changes |
+| `git stash save "message"` | Stash with message |
+| `git stash -u` | Include untracked files |
+| `git stash list` | List stashes |
+| `git stash show` | Show stash changes |
+| `git stash show -p` | Show stash changes with diff |
+| `git stash apply` | Apply most recent stash |
+| `git stash apply stash@{n}` | Apply specific stash |
+| `git stash pop` | Apply and drop most recent stash |
+| `git stash pop stash@{n}` | Apply and drop specific stash |
+| `git stash drop` | Drop most recent stash |
+| `git stash drop stash@{n}` | Drop specific stash |
+| `git stash clear` | Remove all stashes |
+| `git stash branch <branch>` | Create branch from stash |
+
+## Tagging
+
+| Command | Description |
+|---------|-------------|
+| `git tag` | List tags |
+| `git tag -l "pattern"` | List tags matching pattern |
+| `git tag <tag-name>` | Create lightweight tag |
+| `git tag -a <tag-name> -m "message"` | Create annotated tag |
+| `git tag -a <tag-name> <commit>` | Tag specific commit |
+| `git tag -d <tag-name>` | Delete tag |
+| `git push <remote> <tag-name>` | Push tag to remote |
+| `git push <remote> --tags` | Push all tags to remote |
+| `git checkout <tag-name>` | Check out tag (detached HEAD) |
+
+## Advanced Operations
+
+### History Rewriting
+
+| Command | Description |
+|---------|-------------|
+| `git reset --soft <commit>` | Reset to commit, keep changes staged |
+| `git reset --mixed <commit>` | Reset to commit, keep changes unstaged |
+| `git reset --hard <commit>` | Reset to commit, discard changes |
+| `git revert <commit>` | Create new commit undoing changes |
+| `git revert -n <commit>` | Revert without creating commit |
+| `git revert --continue` | Continue revert after resolving conflicts |
+| `git revert --abort` | Abort revert in progress |
+| `git reflog` | Show reference logs |
+| `git filter-branch` | Rewrite history (use with caution) |
+
+### Submodules
+
+| Command | Description |
+|---------|-------------|
+| `git submodule add <url> <path>` | Add submodule |
+| `git submodule init` | Initialize submodules |
+| `git submodule update` | Update submodules |
+| `git submodule update --init` | Initialize and update submodules |
+| `git submodule update --recursive` | Update recursively |
+| `git submodule update --remote` | Update to latest remote |
+| `git submodule status` | Show submodule status |
+| `git submodule foreach <command>` | Run command in each submodule |
+
+### Worktrees
+
+| Command | Description |
+|---------|-------------|
+| `git worktree add <path> <branch>` | Create worktree for branch |
+| `git worktree list` | List worktrees |
+| `git worktree remove <path>` | Remove worktree |
+| `git worktree prune` | Prune worktree information |
+
+### Bisecting
+
+| Command | Description |
+|---------|-------------|
+| `git bisect start` | Start bisect session |
+| `git bisect good <commit>` | Mark commit as good |
+| `git bisect bad <commit>` | Mark commit as bad |
+| `git bisect reset` | End bisect session |
+| `git bisect skip` | Skip current commit |
+| `git bisect run <script>` | Run automated script |
+
+## Inspection and Comparison
+
+| Command | Description |
+|---------|-------------|
+| `git blame <file>` | Show who changed each line |
+| `git blame -L <start>,<end> <file>` | Blame specific lines |
+| `git blame -C <file>` | Detect moved or copied lines |
+| `git grep <pattern>` | Search working directory |
+| `git grep -n <pattern>` | Search with line numbers |
+| `git grep --count <pattern>` | Count matches |
+| `git count-objects` | Count objects and disk space |
+| `git count-objects -v` | Verbose count |
+| `git ls-files` | List tracked files |
+| `git ls-tree <tree-ish>` | List contents of a tree object |
+| `git cat-file -p <object>` | Display object content |
+| `git rev-parse <ref>` | Convert ref to SHA-1 |
+| `git rev-list --count <ref>` | Count commits |
+
+## Debugging
+
+| Command | Description |
+|---------|-------------|
+| `git fsck` | Check repository integrity |
+| `git gc` | Clean up unnecessary files |
+| `git gc --aggressive` | Aggressively optimize repository |
+| `git prune` | Remove unreachable objects |
+| `git verify-pack -v .git/objects/pack/pack-*.idx` | Verify packed objects |
+
+## Aliases and Scripting
+
+| Command | Description |
+|---------|-------------|
+| `git config --global alias.<name> "<command>"` | Create alias |
+| `git config --global alias.co "checkout"` | Create checkout alias |
+| `git config --global alias.unstage "reset HEAD --"` | Create unstage alias |
+| `git config --global alias.last "log -1 HEAD"` | Create last commit alias |
+| `git config --global alias.visual '!gitk'` | Create alias with external command |
+
+## Plumbing Commands
+
+| Command | Description |
+|---------|-------------|
+| `git hash-object <file>` | Compute object ID |
+| `git update-index` | Register file contents in the working tree |
+| `git index-pack` | Build pack index file |
+| `git unpack-objects` | Unpack objects from a packed archive |
+| `git write-tree` | Create a tree object from the current index |
+| `git read-tree` | Read tree information into the index |
+| `git commit-tree` | Create a new commit object |
+| `git update-ref` | Update the object name stored in a ref |
+| `git symbolic-ref` | Read, modify and delete symbolic refs |
+| `git mktag` | Create a tag object |
+| `git pack-objects` | Create a packed archive of objects |
+
+## Common Patterns and Examples
+
+### Basic Workflow
+
+```bash
+# Clone repository
+git clone <url>
+
+# Create branch
+git checkout -b feature-branch
+
+# Make changes and commit
+git add .
+git commit -m "Add new feature"
+
+# Push to remote
+git push -u origin feature-branch
+```
+
+### Undo Last Commit
+
+```bash
+# Keep changes staged
+git reset --soft HEAD^
+
+# Keep changes, but unstage them
+git reset HEAD^
+
+# Discard changes (dangerous)
+git reset --hard HEAD^
+```
+
+### Merge vs Rebase
+
+```bash
+# Merge approach
+git checkout main
+git pull
+git checkout feature-branch
+git merge main
+git push
+
+# Rebase approach
+git checkout feature-branch
+git rebase main
+git push --force-with-lease
+```
+
+### Fix Last Commit
+
+```bash
+# Change commit message
+git commit --amend -m "New message"
+
+# Add forgotten files
+git add forgotten-file
+git commit --amend --no-edit
+```
+
+### Cleaning Up Branches
+
+```bash
+# Delete local branches that have been merged to main
+git checkout main
+git branch --merged | grep -v "^\*" | xargs git branch -d
+
+# Prune remote-tracking branches
+git fetch --prune
+```
+
+### Creating and Applying Patches
+
+```bash
+# Create patch
+git format-patch -1 <commit>
+
+# Apply patch
+git apply file.patch
+
+# Apply patch as commit
+git am file.patch
+```
+
+### Working with Submodules
+
+```bash
+# Add submodule
+git submodule add <repository> <path>
+
+# Clone repository with submodules
+git clone --recurse-submodules <repository>
+
+# Initialize submodules after clone
+git submodule update --init --recursive
+```
+
+## Advanced Git Configuration
+
+### Useful Configuration Settings
+
+```bash
+# Set pull to rebase by default
+git config --global pull.rebase true
+
+# Auto-setup rebase for branches
+git config --global branch.autoSetupRebase always
+
+# Set commit template
+git config --global commit.template ~/.gitmessage
+
+# Set global gitignore
+git config --global core.excludesfile ~/.gitignore_global
+
+# Cache credentials
+git config --global credential.helper cache
+
+# Set diff tool
+git config --global diff.tool vimdiff
+
+# Enable git rerere (Reuse Recorded Resolution)
+git config --global rerere.enabled true
+```
+
+### Git Hooks
+
+Git hooks are scripts that Git executes before or after events like commit, push, and receive.
+
+```bash
+# Example pre-commit hook
+# In .git/hooks/pre-commit
+#!/bin/sh
+# Check if code passes tests
+npm test
+if [ $? -ne 0 ]; then
+    echo "Tests failed! Commit aborted."
+    exit 1
+fi
+```
