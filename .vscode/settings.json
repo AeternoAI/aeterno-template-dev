@@ -1,0 +1,109 @@
+// ===================================
+// EDITOR APPEARANCE & FONT SETTINGS
+// ===================================
+{
+    // Font & Text Rendering
+    "editor.fontSize": 11.25,                          // Sets the font size (in px) for the editor
+    "editor.lineHeight": 1.65,                         // Controls the line height as a multiplier of font size
+    "workbench.fontAliasing": "antialiased",           // Improves font rendering on Mac
+    
+    // Visual Enhancements
+    "editor.cursorBlinking": "expand",                 // Cursor expands when blinking for better visibility
+    "editor.cursorSmoothCaretAnimation": "on",         // Enables smooth cursor movement for better focus
+    "editor.bracketPairColorization.enabled": true,    // Colorizes matching brackets for easier identification
+    "editor.guides.bracketPairs": true,                // Shows guides to visually match bracket pairs
+    "editor.wordWrap": "on",                           // Wraps text that extends beyond the viewport width
+    "editor.smoothScrolling": true,                    // Enables smooth animation when scrolling
+    "editor.stickyScroll.enabled": true,               // Keeps function headers visible as you scroll
+    "editor.scrollBeyondLastLine": false,              // Prevents scrolling beyond the last line
+    
+    // Minimap Configuration
+    "editor.minimap.enabled": true,                    // Shows a miniature map of the file on the right
+    "editor.minimap.showSlider": "always",             // Always displays the slider in the minimap
+  
+    // Terminal Appearance
+    "terminal.integrated.fontSize": 11.25,             // Sets font size for the terminal
+    "terminal.integrated.lineHeight": 1.05,            // Controls line height in the terminal
+    "terminal.integrated.fontFamily": "MesloLGS NF",   // Great font for terminal with icons support
+    "terminal.integrated.cursorStyle": "line",         // Uses line cursor in terminal
+    "terminal.integrated.cursorBlinking": true,        // Enables cursor blinking in terminal
+    
+    // Documentation & Chat Font Settings
+    "markdown.preview.fontSize": 12.1875,              // Sets font size for markdown preview
+    "markdown.preview.lineHeight": 1.4,                // Controls line spacing in markdown preview
+    "chat.editor.fontSize": 12.1875,                   // Sets font size for the chat editor
+  
+    // ===================================
+    // WORKBENCH & UI CONFIGURATION
+    // ===================================
+    
+    // Theme & Colors
+    "workbench.colorTheme": "Solarized Light",         // Sets the color theme for the editor
+    "workbench.editor.decorations.colors": true,       // Enables colorful editor decorations
+    
+    // Layout & Organization
+    "workbench.sideBar.location": "right",             // Places the sidebar on the right side
+    "workbench.tree.indent": 20,                       // Sets indentation width in the file explorer
+    "workbench.tree.renderIndentGuides": "always",     // Shows indent guides in tree views
+    "workbench.editor.limit.enabled": true,            // Limits the number of visible editor tabs
+    "workbench.editor.limit.value": 8,                 // Maximum number of visible editor tabs
+    "workbench.editor.wrapTabs": true,                 // Wraps tabs when they exceed the viewport width
+    "workbench.editorAssociations": {                  // Handles specific file types with default editor
+      "{git,gitlens,git-graph}:/**/*.{md,csv,svg}": "default"
+    },
+    
+    // Window Behavior
+    "window.nativeTabs": true,                         // Uses macOS native tabs
+    "zenMode.fullScreen": false,                       // Prevents Zen Mode from going full screen
+    
+    // ===================================
+    // EDITOR & TERMINAL BEHAVIOR
+    // ===================================
+    
+    // Editor Navigation
+    "editor.gotoLocation.multipleDefinitions": "goto", // Goes directly to definition if only one exists
+    
+    // Terminal Performance & Behavior
+    "terminal.integrated.gpuAcceleration": "auto",     // Uses GPU acceleration for better performance
+    "terminal.integrated.tabs.showActiveTerminal": "always", // Always shows which terminal is active
+    "terminal.integrated.macOptionIsMeta": true,       // Makes Option key act as Meta key in terminal
+    "terminal.integrated.macOptionClickForcesSelection": true, // Option+click forces selection in terminal
+    
+    // ===================================
+    // FILE HANDLING & EXPLORER
+    // ===================================
+    
+    // File Saving & Management
+    "files.autoSave": "afterDelay",                    // Auto-saves files after delay
+    "files.autoSaveDelay": 30000,                         // Sets auto-save delay to 10ms
+    "explorer.autoReveal": true,                       // Auto-reveals files in explorer when opened
+    "explorer.compactFolders": false,                  // Doesn't compact single child folders
+    
+    // ===================================
+    // SEARCH, GIT & TOOLS
+    // ===================================
+    
+    // Search Behavior
+    "search.smartCase": true,                          // Makes search case-sensitive when using uppercase
+    
+    // Git Integration
+    "git.autofetch": true,                             // Automatically fetches changes from remote repos
+    "diffEditor.ignoreTrimWhitespace": false,          // Shows whitespace differences in diff view
+    
+    // ===================================
+    // CURSOR-SPECIFIC & EXTENSIONS
+    // ===================================
+    
+    // Cursor IDE Features
+    "cursor.general.gitGraphIndexing": "enabled",      // Enables Git graph indexing feature
+    "cursor.cpp.disabledLanguages": [                  // Languages where C++ features are disabled
+      "plaintext"
+    ],
+    
+    // Extension Configuration
+    "vscode-office.openOutline": false,                // Disables outline view for Office files
+    "vsicons.dontShowNewVersionMessage": true,
+    "cursor.diffs.useCharacterLevelDiffs": true,
+    "cursor.terminal.usePreviewBox": true,
+    "workbench.activityBar.orientation": "vertical" // Hides version update messages for VSIcons
+  }
