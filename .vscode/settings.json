@@ -36,9 +36,7 @@
     // ===================================
     // WORKBENCH & UI CONFIGURATION
     // ===================================
-    
-    // Theme & Colors
-    "workbench.colorTheme": "Solarized Light",         // Sets the color theme for the editor
+           // Sets the color theme for the editor
     "workbench.editor.decorations.colors": true,       // Enables colorful editor decorations
     
     // Layout & Organization
