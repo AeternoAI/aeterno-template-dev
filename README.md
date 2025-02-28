@@ -36,7 +36,7 @@ The `.cursor` directory contains rules and configurations that enhance the Curso
 
 The `.cursor/rules/memory-bank.mdc` provides a structured documentation system that helps AI assistants maintain context between sessions. This system creates and manages a set of markdown files that track project information and progress.
 
-![Memory Bank Example](./.assets/image.png)
+![Memory Bank Example](./assets/memory-bank-example.png)
 
 The Memory Bank consists of core files organized in a hierarchy:
 - `projectbrief.md` - The foundation document for the project
@@ -45,6 +45,37 @@ The Memory Bank consists of core files organized in a hierarchy:
 - `systemPatterns.md` - System architecture and key technical decisions
 - `techContext.md` - Technologies used and technical constraints
 - `progress.md` - What works and what's left to build
+
+#### Memory Bank Usage
+
+To effectively use the Memory Bank system with Cursor IDE:
+
+**Key Commands:**
+- **"follow your memory bank instructions"** - Instructs Cursor to read the context files and continue where it left off
+- **"initialize memory bank"** - Starts a fresh Memory Bank for a new project
+- **"update memory bank"** - Triggers a full documentation review and update
+
+**Best Practices:**
+- Use **Ask mode** in Cursor IDE for strategy discussions and planning
+- Use **Agent mode** in Cursor IDE for implementation tasks
+- Let the Memory Bank evolve naturally as your project grows
+- Toggle between Edit/Agent modes as needed for different types of tasks
+- Maintain regular updates to keep AI context accurate across sessions
+
+This systematic approach ensures AI assistants retain critical project context between sessions, providing consistent and informed assistance throughout your development process.
+
+### File Structure Guide
+
+The `.cursor/rules/structure.mdc` provides a comprehensive file tree view of the repository structure, making it easier for AI assistants to navigate and understand the codebase organization without having to repeatedly scan the file system.
+
+![Structure Example](./assets/structure-example.png)
+
+Having this structural information readily available helps:
+- **Allows Cursor IDE to quickly and accurately identify the entire structure of the project** without scanning all files
+- Quickly identify the location of important files and directories
+- Understand the organizational patterns used in the codebase
+- Navigate efficiently through complex project hierarchies
+- Provide more accurate file path references when making suggestions
 
 ### README Generator
 
