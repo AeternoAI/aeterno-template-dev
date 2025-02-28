@@ -15,6 +15,7 @@ This repository is a storage location for:
 - **`.devtools/`** - Tools for generating documentation (e.g., README generator)
 - **`.scripts/`** - Utility scripts for the repository
 - **`.vscode/`** - VS Code editor settings and configurations
+- **`.assets/`** - Image assets and examples
 
 ## Getting Started
 
@@ -30,6 +31,20 @@ cd devlib
 ### Cursor IDE Rules
 
 The `.cursor` directory contains rules and configurations that enhance the Cursor IDE experience. These can be referenced in your projects to maintain consistent AI-assisted development patterns.
+
+### Memory Bank System
+
+The `.cursor/rules/memory-bank.mdc` provides a structured documentation system that helps AI assistants maintain context between sessions. This system creates and manages a set of markdown files that track project information and progress.
+
+![Memory Bank Example](./.assets/image.png)
+
+The Memory Bank consists of core files organized in a hierarchy:
+- `projectbrief.md` - The foundation document for the project
+- `productContext.md` - Why the project exists and what problems it solves
+- `activeContext.md` - Current work focus and recent changes
+- `systemPatterns.md` - System architecture and key technical decisions
+- `techContext.md` - Technologies used and technical constraints
+- `progress.md` - What works and what's left to build
 
 ### README Generator
 
