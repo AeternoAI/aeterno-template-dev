@@ -1,5 +1,5 @@
 ---
-description: File tree structure of the repo
+description: File tree of the current project
 globs: 
 alwaysApply: true
 ---

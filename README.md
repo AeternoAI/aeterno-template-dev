@@ -36,7 +36,7 @@ The `.cursor` directory contains rules and configurations that enhance the Curso
 
 The `.cursor/rules/memory-bank.mdc` provides a structured documentation system that helps AI assistants maintain context between sessions. This system creates and manages a set of markdown files that track project information and progress.
 
-![Memory Bank Example](./assets/memory-bank-example.png)
+![Memory Bank Example](./.assets/memory-bank-example.png)
 
 The Memory Bank consists of core files organized in a hierarchy:
 - `projectbrief.md` - The foundation document for the project
@@ -68,7 +68,7 @@ This systematic approach ensures AI assistants retain critical project context b
 
 The `.cursor/rules/structure.mdc` provides a comprehensive file tree view of the repository structure, making it easier for AI assistants to navigate and understand the codebase organization without having to repeatedly scan the file system.
 
-![Structure Example](./assets/structure-example.png)
+![Structure Example](./.assets/structure-example.png)
 
 Having this structural information readily available helps:
 - **Allows Cursor IDE to quickly and accurately identify the entire structure of the project** without scanning all files
