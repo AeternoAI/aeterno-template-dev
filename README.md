@@ -26,6 +26,56 @@ git clone https://github.com/AeternoAI/devlib.git
 cd devlib
 ```
 
+### Setup Git Ignore
+
+Copy our recommended `.gitignore` configuration:
+
+```bash
+# Copy the example .gitignore to your project
+cp .gitignore.example .gitignore
+```
+
+Or create your own `.gitignore` file with the following content:
+
+```
+# Excluded directories
+.cursor/
+.devtools/
+.assets/
+.vscode/
+.scripts/
+
+# Node.js dependencies
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Build outputs
+dist/
+build/
+out/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# MacOS specific
+.DS_Store
+
+# Log files
+*.log
+
+# Editor specific
+*.swp
+*.swo
+.idea/
+*.sublime-* 
+```
+
 ## Usage
 
 ### Cursor IDE Rules
