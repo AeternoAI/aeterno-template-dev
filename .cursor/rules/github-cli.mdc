@@ -1,7 +1,7 @@
 ---
 description: GitHub CLI commands
 globs: 
-alwaysApply: true
+alwaysApply: false
 ---
 # Complete GitHub CLI Commands Reference
 
