@@ -1,6 +1,6 @@
-# AeternoAI DevLib 🛠️
+# AeternoAI Repository Template
 
-> Developer tools and Cursor IDE rules for AeternoAI projects
+> Developer productivity tools and enhanced development experience resources for AeternoAI projects
 
 ## Overview
 
@@ -9,10 +9,31 @@ This repository is a storage location for:
 2. Development tools that enhance productivity for AeternoAI projects
 3. VS Code settings for consistent development environments
 
+## Table of Contents
+
+- [AeternoAI Repository Template](#aeternoai-repository-template)
+  - [Overview](#overview)
+  - [Table of Contents](#table-of-contents)
+  - [Contents](#contents)
+  - [Getting Started](#getting-started)
+    - [Setup Git Ignore](#setup-git-ignore)
+  - [Usage](#usage)
+    - [Cursor IDE Rules](#cursor-ide-rules)
+    - [Memory Bank System](#memory-bank-system)
+      - [Memory Bank Usage](#memory-bank-usage)
+    - [File Structure Guide](#file-structure-guide)
+    - [Advanced Reasoning Rule](#advanced-reasoning-rule)
+    - [Developer Tools](#developer-tools)
+      - [README Generator](#readme-generator)
+      - [Architecture Design Tool](#architecture-design-tool)
+      - [System Requirements Specification Creator](#system-requirements-specification-creator)
+    - [VS Code Settings](#vs-code-settings)
+  - [License](#license)
+
 ## Contents
 
 - **`.cursor/`** - Rules and configurations for Cursor IDE
-- **`.devtools/`** - Tools for generating documentation (e.g., README generator)
+- **`.devtools/`** - Tools for generating documentation and architectural designs
 - **`.scripts/`** - Utility scripts for the repository
 - **`.vscode/`** - VS Code editor settings and configurations
 - **`.assets/`** - Image assets and examples
@@ -22,8 +43,8 @@ This repository is a storage location for:
 Clone this repository to access the development tools and Cursor IDE configurations:
 
 ```bash
-git clone https://github.com/AeternoAI/devlib.git
-cd devlib
+git clone https://github.com/AeternoAI/aeterno-template-dev.git
+cd aeterno-template-dev
 ```
 
 ### Setup Git Ignore
@@ -78,6 +99,8 @@ out/
 
 ## Usage
 
+The following sections describe the various components of this repository and how to use them effectively in your projects.
+
 ### Cursor IDE Rules
 
 The `.cursor` directory contains rules and configurations that enhance the Cursor IDE experience. These can be referenced in your projects to maintain consistent AI-assisted development patterns.
@@ -127,9 +150,52 @@ Having this structural information readily available helps:
 - Navigate efficiently through complex project hierarchies
 - Provide more accurate file path references when making suggestions
 
-### README Generator
+### Advanced Reasoning Rule
 
-The `.devtools` directory contains tools like `generate-readme.md` which provides instructions for generating comprehensive README files for codebases.
+The enhanced reasoning methodology in the agent.mdc file provides a rule-based framework that demonstrates significant improvements in thought process and analysis depth, resulting in more thorough and methodical problem-solving.
+
+![Reasoning Difference Example](./.assets/reasoning-difference.png)
+
+This comparison showcases:
+- Deeper analytical processes with structured reasoning
+- More comprehensive consideration of all aspects of a problem
+- Enhanced self-questioning and exploratory thinking
+- Systematic approach to breaking down complex tasks
+- Clear progression from initial impressions to well-reasoned conclusions
+
+The improved reasoning rule ensures more accurate and thorough responses to complex queries, providing better guidance and more reliable solutions.
+
+### Developer Tools
+
+The `.devtools` directory contains specialized tools that enhance the development workflow:
+
+#### README Generator
+
+The `readme-creator.md` provides instructions for generating comprehensive README files for codebases, ensuring consistent documentation across projects.
+
+#### Architecture Design Tool
+
+The `architect.md` provides an advanced architectural planning framework that guides you through designing robust system architectures before implementation begins. Key features include:
+
+- Systematic requirements analysis methodology
+- Multi-perspective architectural reasoning
+- Design decision frameworks with trade-off analysis
+- Technical feasibility assessment
+- Structured self-questioning protocols for thorough design validation
+
+This tool helps prevent costly implementation mistakes by ensuring thorough architectural planning with clear reasoning and documentation. The output from this tool includes the Product Requirements Document (PRD) which serves as input for the SRS Creator.
+
+#### System Requirements Specification Creator
+
+The `srs-creator.md` is a powerful tool for translating product requirements into detailed technical specifications. It features:
+
+- Structured analytical frameworks for requirements extraction
+- Comprehensive requirement templates for functional and non-functional requirements
+- Technical specification frameworks for APIs, data models, and components
+- Web search integration for current best practices research
+- Validation against trusted technical sources
+
+This tool ensures your System Requirements Specifications are thorough, precise, and aligned with modern development standards. For optimal workflow, use the Architecture Design Tool first to create the PRD, then use the SRS Creator to translate those requirements into technical specifications.
 
 ### VS Code Settings
 
