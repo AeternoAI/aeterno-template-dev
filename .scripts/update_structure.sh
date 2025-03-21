@@ -2,6 +2,9 @@
 # save to .scripts/update_structure.sh
 # best way to use is with tree: `brew install tree`
 
+# Directories to exclude
+EXCLUDE_DIRS=".cursor/ .devtools/ .assets/ .vscode/ .scripts/"
+
 # Create the output file with header
 echo "# Project Structure" > .cursor/rules/structure.mdc
 echo "" >> .cursor/rules/structure.mdc
@@ -10,14 +13,15 @@ echo "\`\`\`" >> .cursor/rules/structure.mdc
 # Check if tree command is available
 if command -v tree &> /dev/null; then
   # Use tree command for better visualization
-  git ls-files --others --exclude-standard --cached | tree --fromfile -a >> .cursor/rules/structure.mdc
+  # Filter out the excluded directories
+  git ls-files --others --exclude-standard --cached | grep -v -E "^($(echo $EXCLUDE_DIRS | sed 's/ /|/g'))" | tree --fromfile -a >> .cursor/rules/structure.mdc
   echo "Using tree command for structure visualization."
 else
   # Fallback to the alternative approach if tree is not available
   echo "Tree command not found. Using fallback approach."
 
-  # Get all files from git (respecting .gitignore)
-  git ls-files --others --exclude-standard --cached | sort > /tmp/files_list.txt
+  # Get all files from git (respecting .gitignore) and filter out excluded directories
+  git ls-files --others --exclude-standard --cached | grep -v -E "^($(echo $EXCLUDE_DIRS | sed 's/ /|/g'))" | sort > /tmp/files_list.txt
 
   # Create a simple tree structure
   echo "." > /tmp/tree_items.txt
@@ -27,6 +31,17 @@ else
     # Skip directories
     if [[ -d "$file" ]]; then continue; fi
 
+    # Skip excluded directories
+    skip=false
+    for exclude_dir in $EXCLUDE_DIRS; do
+      if [[ "$file" == ${exclude_dir}* ]]; then
+        skip=true
+        break
+      fi
+    done
+    
+    if [[ "$skip" == "true" ]]; then continue; fi
+
     # Add the file to the tree
     echo "$file" >> /tmp/tree_items.txt
 
@@ -34,6 +49,17 @@ else
     dir="$file"
     while [[ "$dir" != "." ]]; do
       dir=$(dirname "$dir")
+      # Skip excluded directories for parent paths too
+      skip=false
+      for exclude_dir in $EXCLUDE_DIRS; do
+        if [[ "$dir" == ${exclude_dir%/} ]]; then
+          skip=true
+          break
+        fi
+      done
+      
+      if [[ "$skip" == "true" ]]; then continue; fi
+      
       echo "$dir" >> /tmp/tree_items.txt
     done
   done < /tmp/files_list.txt
