@@ -1,7 +1,7 @@
 ---
-description: Git commands for CLI operations
+description: 
 globs: 
-alwaysApply: false
+alwaysApply: true
 ---
 # Complete Git Commands Reference
 
