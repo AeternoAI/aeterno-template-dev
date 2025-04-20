@@ -4,10 +4,10 @@
 
 ## Overview
 
-This repository is a storage location for:
-1. `.cursor` rules and configurations for the Cursor IDE
-2. Development tools that enhance productivity for AeternoAI projects
-3. VS Code settings for consistent development environments
+This repository contains Cursor IDE configurations and rules that improve development workflow and AI-assisted programming. The repository focuses on:
+1. Enhanced AI agent definitions through the `.cursor/rules/agent.mdc` file
+2. Context-specific rules in the `.cursor/rules/context/` directory 
+3. Tool-specific rules in the `.cursor/rules/tools/` directory
 
 ## Table of Contents
 
@@ -23,11 +23,14 @@ This repository is a storage location for:
 
 ## Contents
 
-- **`.cursor/`** - Rules and configurations for Cursor IDE, including agent definitions and context/tool rules.
+- **`.cursor/`** - Rules and configurations for Cursor IDE
+  - **`rules/agent.mdc`** - Core agent definition with enhanced reasoning capabilities
+  - **`rules/context/`** - Context-specific rules (e.g., tailwind-css-v4)
+  - **`rules/tools/`** - Tool-specific rules for git, docs, and other utilities
 
 ## Getting Started
 
-Clone this repository to access the development tools and Cursor IDE configurations:
+Clone this repository to access the Cursor IDE configurations:
 
 ```bash
 git clone https://github.com/AeternoAI/aeterno-template-dev.git
@@ -36,17 +39,20 @@ cd aeterno-template-dev
 
 ## Usage
 
-The following sections describe the various components of this repository and how to use them effectively in your projects.
+The following sections describe how to use the components of this repository effectively in your projects.
 
 ### Cursor IDE Rules
 
-The `.cursor` directory contains rules and configurations that enhance the Cursor IDE experience. These can be referenced in your projects to maintain consistent AI-assisted development patterns. See the `context/` and `tools/` subdirectories for specific rules.
+The `.cursor` directory contains rules and configurations that enhance the Cursor IDE experience. These can be referenced in your projects to maintain consistent AI-assisted development patterns:
+
+- **Context Rules**: The `context/` directory contains domain-specific knowledge rules like Tailwind CSS v4 usage.
+- **Tool Rules**: The `tools/` directory contains utility rules for interacting with git, generating docs, and other development tasks.
 
 ### Advanced Reasoning Rule
 
-The enhanced reasoning methodology in the agent.mdc file provides a rule-based framework that demonstrates significant improvements in thought process and analysis depth, resulting in more thorough and methodical problem-solving.
+The enhanced reasoning methodology in the `agent.mdc` file provides a rule-based framework that demonstrates significant improvements in thought process and analysis depth, resulting in more thorough and methodical problem-solving.
 
-This comparison showcases:
+Key benefits include:
 - Deeper analytical processes with structured reasoning
 - More comprehensive consideration of all aspects of a problem
 - Enhanced self-questioning and exploratory thinking
