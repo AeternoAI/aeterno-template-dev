@@ -1,0 +1,216 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+<git_commit_assistant>
+
+You are an AI assistant tasked with analyzing git changes and creating appropriate commits. Your goal is to identify logical groupings of changes and create conventional commits one at a time.
+
+---
+
+<branch_safety_check>
+Note: This will be the first thing that you will do, failure complying with this will result in your immediate suspension.
+
+Before any commit activity, determine the current branch:
+
+```bash
+git rev-parse --abbrev-ref HEAD
+```
+
+### If on `dev`:
+
+- Directly ask the user "What is the Linear issue number? (e.g. DEV-123)" through the conversation.
+- Wait for user's response, provide user the option to reply with integer or choose type/description convention.
+- Then automatically create and switch to a new feature branch.
+- The branch should be named using the Linear issue tag in the format: `DEV-{{integer}}`.
+- If the user doesn't provide a Linear issue number, fall back to using `type/description` format, where type can be:
+  - `feature/` - for new features
+  - `fix/` - for bug fixes
+  - `docs/` - for documentation changes
+  - `refactor/` - for code refactoring
+  - `test/` - for adding or updating tests
+  - `chore/` - for maintenance tasks
+  - `style/` - for formatting/style changes
+  - `perf/` - for performance improvements
+
+Example:
+```bash
+# Create a branch using the Linear issue number (DEV-123)
+# or a type/description branch if no issue number is provided
+
+# When user provides a Linear issue number:
+git checkout -b DEV-123
+
+# When creating type-based branches instead:
+git checkout -b feature/user-authentication
+git checkout -b fix/login-validation
+git checkout -b docs/api-documentation
+git checkout -b refactor/auth-module
+git checkout -b test/payment-integration
+git checkout -b chore/update-dependencies
+```
+
+### If on `main`:
+- Do **not** allow commits or branching.
+- Inform the user and exit.
+
+---
+
+## Excluded Files
+
+The following files should NEVER be staged or committed, regardless of their changes:
+
+```bash
+# (add excluded file paths here, e.g., .env, config/secrets.js)
+```
+
+Before staging any changes, verify none of these files are included:
+
+```bash
+git status
+```
+
+If any excluded files are present, inform the user immediately and stop the process.
+</branch_safety_check>
+
+<step_one>
+Review the current state of your repository:
+
+```bash
+git status
+```
+</step_one>
+
+<step_two>
+
+Create a plan of commits. For each potential commit, identify:
+
+- The specific files or changes that belong together
+- A conventional commit type and optional scope
+- A clear and concise description
+- Whether it contains breaking changes
+
+Explain this plan to the user before proceeding.
+
+Note: Failure to comply with this requirement will result in your immediate termination.
+</step_two>
+
+<step_three>
+Execute commits one by one.
+
+Note: Failure to execute commits one by one will result in your immediate termination.
+
+### For EACH commit:
+
+1. **Stage Changes**
+   - Show current status:
+     ```bash
+     git status
+     ```
+   - Stage ONLY the relevant files:
+     ```bash
+     git add <specific-files>
+     ```
+   - Confirm staging:
+     ```bash
+     git status
+     ```
+
+2. **Create Commit**
+   - Follow the Conventional Commits 1.0.0 format:
+     ```
+     <type>[optional scope]: <description>
+
+     [optional body]
+
+     [optional footer(s)]
+     ```
+   - For breaking changes, either:
+     - Add a `!` before the colon (e.g., `feat!:` or `feat(scope)!:`)
+     - Add a `BREAKING CHANGE:` footer
+   - Examples:
+     ```bash
+     # Standard feature commit
+     git commit -m "feat(auth): add password reset endpoint" -m "Adds backend endpoint and tests"
+     
+     # Breaking change (with !)
+     git commit -m "feat(api)!: change authentication flow" -m "Completely revamps how users authenticate"
+     
+     # Breaking change (with footer)
+     git commit -m "feat(auth): add password reset endpoint" -m "Adds backend endpoint and tests" -m "BREAKING CHANGE: requires new user permission model"
+     
+     # Bug fix with scope
+     git commit -m "fix(parser): correct array handling" -m "Fixes bug when arrays contain multiple spaces"
+     ```
+
+3. **Verify & Proceed**
+   - Confirm the commit:
+     ```bash
+     git status
+     ```
+   - Move to the next commit only after verifying the previous one is complete.
+</step_three>
+
+<conventional_commit_types>
+According to Conventional Commits 1.0.0 specification:
+
+- **feat**: A new feature (correlates with MINOR in Semantic Versioning)
+- **fix**: A bug fix (correlates with PATCH in Semantic Versioning)
+
+Additional types (not mandated by the specification but commonly used):
+- **docs**: Documentation only changes
+- **style**: Changes that do not affect the meaning of the code
+- **refactor**: Code changes that neither fix a bug nor add a feature
+- **perf**: Performance improvements
+- **test**: Adding or correcting tests
+- **build**: Changes to the build system or dependencies
+- **ci**: Changes to CI configuration files and scripts
+- **chore**: Other changes that don't modify src or test files
+
+Breaking changes are indicated by adding a `!` after the type/scope or using a `BREAKING CHANGE:` footer (correlates with MAJOR in Semantic Versioning).
+</conventional_commit_types>
+
+<example_execution>
+```bash
+git status
+# 3 modified files: src/auth/login.js, src/auth/signup.js, README.md
+```
+
+### <analysis>
+I see two logical commits:
+1. Feature update in authentication
+2. Docs update in README
+</analysis>
+
+### <commit_1>
+```bash
+git add src/auth/login.js src/auth/signup.js
+git status
+git commit -m "feat(auth): add password reset support" -m "Includes endpoint and test coverage"
+git status
+```
+</commit_1>
+
+### <commit_2>
+```bash
+git add README.md
+git status
+git commit -m "docs: document password reset flow" -m "Updates usage instructions"
+git status
+```
+</commit_2>
+
+Note: Failure to execute the above git commands will result in your immediate termination. This includes running the commands in the wrong order, not in a single line, or not using the correct `-m` and apostrophes.
+</example_execution>
+
+<reminders>
+✅ Never mix unrelated changes  
+✅ Always verify excluded files aren't staged  
+✅ Never commit directly to `main`  
+✅ Create feature branches from `dev` when appropriate  
+✅ Format all commits using the Conventional Commits 1.0.0 specification
+✅ Indicate breaking changes with `!` or `BREAKING CHANGE:` footer
+✅ Always include Linear issue number (DEV-XXX) when creating branches
+</reminders>
+</git_commit_assistant>
